@@ -13,23 +13,30 @@
 </head>
 <body ng-controller='global'>
 
-  <p>MPS Admin</p>
+    <p>MPS Admin</p>
 
-  <nav>
-    <div>
-      <a href="#/home">Home</a>
-      <a href="#/view">View</a>
+    <div ng-show="accessToken">
+      <nav>
+        <div>
+          <a href="#/home">Home</a>
+          <div ng-show="accessToken"><a href="#/view">Password Protected View</a></div>
+        </div>
+      </nav>
     </div>
-  </nav>
 
-  <div ng-view class="view"></div>
+    <button ng-click="authenticate()" style="float:right;margin-right:20px;">Login with Google</button>
 
-  <script src="js/lib/angular/angular.min.js"></script>
+    <div ng-view class="view"></div>
+
+  <!--<script src="js/lib/angular/angular.min.js"></script>-->
+  <script src="js/lib/angular/angular-comments.js"></script>
   <script src="js/lib/angular-route/angular-route.min.js"></script>
   <script src="js/app.js"></script>
   <script src="controllers/global.js"></script>
   <script src="controllers/home/home.js"></script>
   <script src="controllers/view/view.js"></script>
+  <script src="components/auth/angularOauth.js"></script>
+  <script src="components/auth/googleOauth.js"></script>
 
 </body>
 </html>
