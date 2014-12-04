@@ -27,11 +27,13 @@
           <ul class="right">
             <li class="divider"></li>
             <li class="divider"></li>
-            <li><a>Current Site: Telemundo</a></li>
-            <li class="has-form">
-              <a class="small button" href="#">Change Site</a>
-            <li>
-            <li class="divider"></li>
+            <span ng-if="siteSelected()">
+              <li><a>Current Site: Telemundo</a></li>
+              <li class="has-form">
+                <a class="small button" href="#">Change Site</a>
+              <li>
+              <li class="divider"></li>
+            </span>
             <li class="has-form">
               <a class="small button alert" href="#" ng-click="logout();">Logout</a>
             </li>
@@ -62,7 +64,6 @@
   <script src="js/app.js"></script>
   <script src="controllers/global.js"></script>
   <script src="controllers/home/home.js"></script>
-  <script src="controllers/view/view.js"></script>
   <script src="controllers/sites/sites.js"></script>
   <script src="components/auth/angularOauth.js"></script>
   <script src="components/auth/googleOauth.js"></script>

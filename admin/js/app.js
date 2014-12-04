@@ -6,63 +6,74 @@ angular.module('mps', [
   'googleOauth',
   'mps.global',
   'mps.home',
-  'mps.view',
   'mps.sites'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
     templateUrl: 'views/home/index.html',
-    controller: 'home'
-  });
-  $routeProvider.when('/view', {
-    templateUrl: 'views/view/index.html',
-    controller: 'view',
+    controller: 'home',
     resolve: {
       auth: function(verifyAuth) {
-        verifyAuth.verifyUser();
+        verifyAuth.verifyUser(true);
       }
     }
-  }).otherwise({redirectTo: '/'});
+  });
   $routeProvider.when('/sites', {
     templateUrl: 'views/sites/index.html',
     controller: 'sites',
     resolve: {
       auth: function(verifyAuth) {
-        verifyAuth.verifyUser();
+        verifyAuth.verifyUser(false);
       }
     }
-  }).otherwise({redirectTo: '/'});
+  });
   $routeProvider.otherwise({redirectTo: '/'});
 }])
 .factory('verifyAuth', ['$rootScope', '$window', '$q', '$location', 'Token', function($rootScope, $window, $q, $location, Token) {
   // Verify token exists before showing view, secondary verification in view controller.
+  // verifyAuth.verifyUser(true) for homepage, verifyAuth.verifyUser(false);
   return {
     userError: function(deferred) {
-      console.log("Failed to verify token.");
       deferred.reject();
       $location.path('/');
       Token.clear();
-      return false;
     },
-    verifyUser: function () {
-      // Verify token exists.
+    verifyUser: function (index) {
+      
       var token = Token.get();
       var deferred = $q.defer();
-      if(token) {
-        var _this = this;
-        // Verify token is authentic to user and has not been modified to gain access.
-        Token.verifyAsync(token).
-          then(function(data) {
-            console.log('User access verified.');
-            console.log(data);
-            deferred.resolve(true);
-          }, function() {
+      var _this = this;
+      var _location = $location;
+
+      switch(index) {
+        // homepage.
+        case true:
+            // Token present, redirect to /sites page.
+            if(token) {
+              deferred.reject();
+              _location.path('/sites');
+            // No token, show homepage.
+            } else {
+              deferred.resolve(true);
+            }
+          break;
+        // password protected subpage.
+        default:
+          // Verifiy token, continue page change.  If invalid, clear and redirect to homepage.
+          if(token) {
+            Token.verifyAsync(token).
+              then(function(data) {
+                deferred.resolve(true);
+              }, function(error) {
+                _this.userError(deferred);
+              }
+            );
+          // No token present, redirect to homepage.
+          } else {
             _this.userError(deferred);
-          });
-      } else {
-        this.userError(deferred);
+          }
+          break;
       }
-      return false;
     }
   }
 }]);

@@ -21,3 +21,11 @@ h1 {
 .pb50 {
     padding-bottom:50px;
 }
+.view {
+    min-height:400px;
+}
+.panel-list a {
+    display:block;
+    width:100%;
+    text-align:left;
+}
