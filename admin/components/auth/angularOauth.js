@@ -107,6 +107,7 @@ angular.module('angularOauth', []).
          * Forgets the access token.
          */
         clear: function() {
+          console.log('Token cleared.');
           localStorage.removeItem(config.localStorageName);
         },
 

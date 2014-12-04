@@ -9,24 +9,52 @@
   <title>MPS Admin</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/foundation.min.css"/>
   <link rel="stylesheet" href="css/styles.css"/>
 </head>
 <body ng-controller='global'>
 
-    <p>MPS Admin</p>
+    <div class="top-bar docs-bar">
 
-    <div ng-show="accessToken">
-      <nav>
-        <div>
-          <a href="#/home">Home</a>
-          <div ng-show="accessToken"><a href="#/view">Password Protected View</a></div>
-        </div>
-      </nav>
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#/home">MPS Admin <sup>v4</sup></a></h1>
+        </li>
+      </ul>
+
+      <div ng-if="accessTokenVerify()">
+        <section class="top-bar-section">
+          <ul class="right">
+            <li class="divider"></li>
+            <li class="divider"></li>
+            <li><a>Current Site: Telemundo</a></li>
+            <li class="has-form">
+              <a class="small button" href="#">Change Site</a>
+            <li>
+            <li class="divider"></li>
+            <li class="has-form">
+              <a class="small button alert" href="#" ng-click="logout();">Logout</a>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+     </div>
+
+    <div class="row">
+      <div ng-view class="view medium-12 columns"></div>
     </div>
 
-    <button ng-click="authenticate()" style="float:right;margin-right:20px;">Login with Google</button>
-
-    <div ng-view class="view"></div>
+    <footer class="row footer">
+      <div class="large-12 columns">
+        <hr>
+        <div class="row">
+          <div class="large-12 columns">
+            <p>Master Page Service (MPS 3.13) - Generated on 12/03/14 @ 04:00 PM in 0.0353 Seconds using 0.73MB [Production Environment]</p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
   <!--<script src="js/lib/angular/angular.min.js"></script>-->
   <script src="js/lib/angular/angular-comments.js"></script>
@@ -35,6 +63,7 @@
   <script src="controllers/global.js"></script>
   <script src="controllers/home/home.js"></script>
   <script src="controllers/view/view.js"></script>
+  <script src="controllers/sites/sites.js"></script>
   <script src="components/auth/angularOauth.js"></script>
   <script src="components/auth/googleOauth.js"></script>
 

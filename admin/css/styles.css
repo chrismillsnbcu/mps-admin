@@ -1,6 +1,23 @@
-body {
-	font-family:'Helvetica Neue', Arial, sans-serif;
-	background:#f1f1f0;
-	margin:0;
-	padding:0;
+h1 {
+    font-size:1.5em;
+    margin-top:10px;
+}
+.footer p {
+    font-size:.8em;
+    padding:0 10px 10px 10px;
+}
+.mt100 {
+    margin-top:100px;
+}
+.mb100 {
+    margin-bottom:100px;
+}
+.center {
+    text-align:center;
+}
+.pt50 {
+    padding-top:50px;
+}
+.pb50 {
+    padding-bottom:50px;
 }

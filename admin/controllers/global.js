@@ -10,12 +10,17 @@ angular.module('mps.global', ['ngRoute', 'googleOauth', 'angularOauth'])
   });
 
 })
-  .controller('global', ['$rootScope', '$scope', '$window', 'Token', function($rootScope, $scope, $window, Token) {
+  .controller('global', ['$rootScope', '$scope', '$window', '$location', 'Token', function($rootScope, $scope, $window, $location, Token) {
 
-    // Authentication.
     $scope.accessToken = Token.get();
 
-    console.log('Token: ' + Token.get());
+    // Authentication.
+    $scope.accessTokenVerify = function() {
+      console.log('token: ' + Token.get());
+      return Token.get();
+    };
+
+    console.log('Token: ' + $scope.accessToken);
 
     $scope.authenticate = function() {
 
@@ -35,6 +40,7 @@ angular.module('mps.global', ['ngRoute', 'googleOauth', 'angularOauth'])
                 $scope.email = data.email;
                 $scope.userId = data.user_id;
                 Token.set(params.access_token);
+                $location.path('/sites');
                 // TODO query database for user permissions, store in $scope.
               });
             }, function() {
@@ -45,6 +51,12 @@ angular.module('mps.global', ['ngRoute', 'googleOauth', 'angularOauth'])
           // Failure getting token from popup.
           alert("Failed to get token from popup.");
         });
+    };
+
+    $scope.logout = function() {
+      console.log('logout');
+      Token.clear();
+      $location.path('/');
     };
 
   }]);

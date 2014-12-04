@@ -6,7 +6,8 @@ angular.module('mps', [
   'googleOauth',
   'mps.global',
   'mps.home',
-  'mps.view'
+  'mps.view',
+  'mps.sites'
 ]).
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/', {
@@ -16,6 +17,15 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/view', {
     templateUrl: 'views/view/index.html',
     controller: 'view',
+    resolve: {
+      auth: function(verifyAuth) {
+        verifyAuth.verifyUser();
+      }
+    }
+  }).otherwise({redirectTo: '/'});
+  $routeProvider.when('/sites', {
+    templateUrl: 'views/sites/index.html',
+    controller: 'sites',
     resolve: {
       auth: function(verifyAuth) {
         verifyAuth.verifyUser();
