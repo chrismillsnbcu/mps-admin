@@ -12,6 +12,12 @@ h1 {
 .mb100 {
     margin-bottom:100px;
 }
+.mt20 {
+    margin-top:20px;
+}
+.mr20 {
+    margin-right:20px;
+}
 .center {
     text-align:center;
 }
@@ -28,4 +34,101 @@ h1 {
     display:block;
     width:100%;
     text-align:left;
+}
+.fade {
+    opacity:0;
+    transition: opacity 1s ease;
+}
+.load {
+    opacity:1;
+}
+.breadcrumbs
+.tiny.button {
+    margin-bottom:0;
+    color:#fff;
+    text-decoration:none;
+}
+.breadcrumbs li {
+    margin-top:12px;
+}
+.breadcrumbs li.right {
+    margin-top:0;
+}
+.breadcrumbs > .right:before {
+    content:'';
+}
+dl.tabs {
+    border-top:2px solid #ccc;
+    width:100%;
+    margin-bottom:20px;
+}
+.tabs dd > a, .tabs .tab-title > a {
+    font-size:12px;
+    color:rgb(0, 140, 186)
+}
+.pricing-table {
+    margin-top:40px;
+}
+.pricing-table .bullet-item {
+    text-align:left;
+}
+.pricing-table .cta-button {
+    text-align:left;
+}
+.pricing-table .title {
+    background-color:#173d4a;
+}
+.pricing-table li ul {
+    list-style:disc !important;
+    margin:0 0 0 10px;
+    padding:0 0 0 10px;
+}
+.pricing-table li ul li {
+    list-style-type:disc;
+    margin:0 0 0 10px;
+    padding:10px;
+}
+.pricing-table li ul.table-list,
+ul.table-list {
+    list-style:none;
+    margin:20px 0 0 0;
+    padding:0;
+}
+.pricing-table li ul.table-list {
+    margin:0;
+}
+.pricing-table li ul.table-list li,
+ul.table-list li {
+    list-style-type:none;
+    background:#f0f0f0;
+    border:1px solid #ccc;
+    margin:3px 0;
+    padding:10px;
+}
+/* Pages */
+.inline-search {
+    text-align:center;
+}
+.inline-search label {
+    display:inline;
+    margin-right:8px;
+}
+.inline-search input[type=text] {
+    width:100px;
+    display:inline;
+    margin:0;
+}
+.inline-search .button {
+    margin:0;
+}
+span.label {
+    cursor:pointer;
+    float:right;
+    margin-top:5px;
+}
+.table-list li .alert {
+    margin-right:5px;
+}
+.clear {
+    clear:both;
 }

@@ -15,7 +15,7 @@ angular.module('googleOauth', ['angularOauth']).
       var verificationEndpoint = 'https://www.googleapis.com/oauth2/v1/tokeninfo';
 
       $rootScope.$apply(function() {
-        $http({method: 'GET', url: verificationEndpoint, params: {access_token: accessToken}}).
+        $http({method: 'GET', async: false, url: verificationEndpoint, params: {access_token: accessToken}}).
           success(function(data) {
             if (data.audience == config.clientId) {
               deferred.resolve(data);

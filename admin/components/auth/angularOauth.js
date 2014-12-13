@@ -84,7 +84,6 @@ angular.module('angularOauth', []).
       return {
         // TODO: get/set might want to support expiration to reauthenticate
         // TODO: check for localStorage support and otherwise perhaps use other methods of storing data (e.g. cookie)
-
         /**
          * Returns the stored access token.
          *
@@ -107,7 +106,6 @@ angular.module('angularOauth', []).
          * Forgets the access token.
          */
         clear: function() {
-          console.log('Token cleared.');
           localStorage.removeItem(config.localStorageName);
         },
 
@@ -159,8 +157,6 @@ angular.module('angularOauth', []).
               status: true
             }
           }, popupOptions);
-
-          console.log(popupOptions);
 
           var deferred = $q.defer(),
             url = buildAuthorizationUrl(extraParams),

@@ -18,7 +18,7 @@
 
       <ul class="title-area">
         <li class="name">
-          <h1><a href="#/home">MPS Admin <sup>v4</sup></a></h1>
+          <h1><a href="#/sites">MPS Admin <sup>v4</sup></a></h1>
         </li>
       </ul>
 
@@ -26,16 +26,10 @@
         <section class="top-bar-section">
           <ul class="right">
             <li class="divider"></li>
+            <li><a>Local Development Environment</a></li>
             <li class="divider"></li>
-            <span ng-if="siteSelected()">
-              <li><a>Current Site: Telemundo</a></li>
-              <li class="has-form">
-                <a class="small button" href="#">Change Site</a>
-              <li>
-              <li class="divider"></li>
-            </span>
             <li class="has-form">
-              <a class="small button alert" href="#" ng-click="logout();">Logout</a>
+              <a class="small button alert" ng-click="logout($event);">Logout</a>
             </li>
           </ul>
         </section>
@@ -65,6 +59,7 @@
   <script src="controllers/global.js"></script>
   <script src="controllers/home/home.js"></script>
   <script src="controllers/sites/sites.js"></script>
+  <script src="controllers/sites/site.js"></script>
   <script src="components/auth/angularOauth.js"></script>
   <script src="components/auth/googleOauth.js"></script>
 
