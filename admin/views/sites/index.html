@@ -8,45 +8,13 @@
 
   <div class="medium-8 columns">
 
-    <div class="panel panel-list">
+    <div class="panel panel-list" id="site-list">
 
-      <a href="#/sites/bravo-apps" class="button small">Bravo Apps</a>
+      <!--<li ng-repeat=" opt in opts" ng-bind-html-unsafe="" >
+        {{ opt.value }}
+      </li>-->
 
-      <a href="#/sites/bravo-web" class="button small">Bravo Web</a>
-
-      <a href="#/sites/cnbc-prime" class="button small">CNBC Prime</a>
-
-      <a href="#/sites/eonline-apps" class="button small">E! Online Apps</a>
-
-      <a href="#/sites/eonline-web" class="button small">E! Online Web</a>
-
-      <a href="#/sites/fandango-apps" class="button small">Fandango Apps</a>
-
-      <a href="#/sites/fandango-mobile" class="button small">Fandango Mobile</a>
-
-      <a href="#/sites/fandango-web" class="button small">Fandango Web</a>
-
-      <a href="#/sites/movies-web" class="button small">Movies Web</a>
-
-      <a href="#/sites/nbc-apps" class="button small">NBC Apps</a>
-
-      <a href="#/sites/nbc-tonightshow" class="button small">NBC Tonight Show</a>
-
-      <a href="#/sites/nbc-web" class="button small">NBC Web</a>
-
-      <a href="#/sites/nbcsports-web" class="button small">NBC Sports Web</a>
-
-      <a href="#/sites/nhl-web" class="button small">NHL Web</a>
-
-      <a href="#/sites/partners" class="button small">Partners</a>
-
-      <a href="#/sites/recode-web" class="button small">Recode Web</a>
-
-      <a href="#/sites/sandbox" class="button small">Sandbox</a>
-
-      <a href="#/sites/telemundo-web" class="button small">Telemundo Web</a>
-
-      <a href="#/sites/usa-web" class="button small">USA Web</a>
+      <a href="#/sites/{{i.sitename}}" ng-repeat="i in sites | orderBy:sitename" class="button small">{{ formatName(i.sitename) }}</a>
 
     </div>
 

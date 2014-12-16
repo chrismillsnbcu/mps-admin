@@ -57,4 +57,39 @@ angular.module('mps.global', ['ngRoute', 'googleOauth', 'angularOauth'])
       }
     };
 
+  }])
+  .service('pageTitle', ['$rootScope', '$window', '$q', '$location', 'Token', function($rootScope, $window, $q, $location, Token) {
+    return {
+      getSiteName: function() {
+        var siteName = $location.$$path;
+        siteName = siteName.split('/');
+        console.log(siteName);
+        siteName = siteName[2].replace('/sites/','');
+        return siteName;
+      },
+      formatTitle: function(path) {
+
+        var title = '';
+
+        if(!path) {
+          var path = this.getSiteName();
+        }
+        path = path.split('-');
+
+        for(var i in path) {
+          var _this = path[i].toLowerCase();
+          _this = _this.charAt(0).toUpperCase() + _this.substring(1);
+          title += _this + ' ';
+        }
+
+        // Format brand names manually.
+        title = title.replace('nbc','NBC');
+        title = title.replace('Nbc','NBC');
+        title = title.replace('Nhl','NHL');
+        title = title.replace('Eonline','E! Online');
+        title = title.replace('Usa','USA');
+
+        return title;
+      }
+    }
   }]);
